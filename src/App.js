@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Message from './components/Message';
+import CommentsList from "./components/CommentsList";
 
 function App() {
   return (
     <div className="App">
-      <Message text="Привет!"/>
-      <Message text="Это REACT!"/>
+      <CommentsList/>
     </div>
   );
 }
