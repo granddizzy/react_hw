@@ -1,0 +1,14 @@
+.main-logo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  overflow: hidden;
+  
+  img {
+    //width: 100%;   /* Ширина изображения */
+    height: 100%;  /* Высота изображения */
+    object-fit: cover;
+  }
+}

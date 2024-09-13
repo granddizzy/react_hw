@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {Box, Button, Card, CardContent, IconButton, List, TextField, Typography} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const TodoList = () => {
+const TodoList = ({tasks, setTasks}) => {
   const [taskText, setTaskText] = useState('');
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const maxChars = 50;
 
   const handleAddTask = () => {

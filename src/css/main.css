@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.main-logo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  overflow: hidden; }
+  .main-logo img {
+    height: 100%;
+    /* Высота изображения */
+    object-fit: cover; }
+
+/*# sourceMappingURL=main.css.map */

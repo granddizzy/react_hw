@@ -1,6 +1,23 @@
-@import url(./scss/reset.css);
+@import url(./css/reset.css);
 .App {
   max-width: 900px;
-  margin: 20px auto; }
+  margin: 0 auto; }
+
+.nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px; }
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s; }
+  .nav-link:hover {
+    color: #007BFF; }
+
+.nav-link-active {
+  font-weight: bold;
+  color: #007BFF; }
 
 /*# sourceMappingURL=App.css.map */
