@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Box, TextField, Typography} from '@mui/material';
+import {useSelector} from "react-redux";
 
 const TemperatureConverter = () => {
   const [celsius, setCelsius] = useState('');
@@ -35,9 +36,13 @@ const TemperatureConverter = () => {
     }
   };
 
+  const theme = useSelector((state) => state.theme.theme);
+
   return (
     <Box sx={{maxWidth: 400, margin: '0 auto', mt: 4, p: 2, textAlign: 'center'}}>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{
+        color: theme === 'light' ? '#000' : '#fff',
+      }}>
         Конвертер температуры
       </Typography>
 
@@ -48,6 +53,29 @@ const TemperatureConverter = () => {
         value={celsius}
         onChange={handleCelsiusChange}
         margin="normal"
+        sx={{
+          backgroundColor: theme === 'light' ? '#fff' : '#555',
+          '& .MuiInputBase-input': {
+            color: theme === 'light' ? '#000' : '#fff',
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: theme === 'light' ? '#ccc' : '#777',
+            },
+            '&:hover fieldset': {
+              borderColor: theme === 'light' ? '#007BFF' : '#FFD700',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: theme === 'light' ? '#007BFF' : '#FFD700',
+            },
+          },
+          '& .MuiInputLabel-root': {
+            color: theme === 'light' ? '#000' : '#fff',
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: theme === 'light' ? '#007BFF' : '#FFD700',
+          },
+        }}
       />
 
       <TextField
@@ -57,6 +85,29 @@ const TemperatureConverter = () => {
         value={fahrenheit}
         onChange={handleFahrenheitChange}
         margin="normal"
+        sx={{
+          backgroundColor: theme === 'light' ? '#fff' : '#555',
+          '& .MuiInputBase-input': {
+            color: theme === 'light' ? '#000' : '#fff',
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: theme === 'light' ? '#ccc' : '#777',
+            },
+            '&:hover fieldset': {
+              borderColor: theme === 'light' ? '#007BFF' : '#FFD700',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: theme === 'light' ? '#007BFF' : '#FFD700',
+            },
+          },
+          '& .MuiInputLabel-root': {
+            color: theme === 'light' ? '#000' : '#fff',
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: theme === 'light' ? '#007BFF' : '#FFD700',
+          },
+        }}
       />
     </Box>
   );

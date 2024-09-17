@@ -1,11 +1,11 @@
 import React from 'react';
 import '../css/main.css'
 
-const Main = () => {
+const Main = ({baseUrl}) => {
   return (
     <>
       <div className="main-logo">
-        <img src='/gb/react/react.png' alt="react"/>
+        <img src= {baseUrl + '/react.png'} alt="react"/>
       </div>
     </>
   );
