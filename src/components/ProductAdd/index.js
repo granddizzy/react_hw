@@ -156,6 +156,7 @@ const AddProduct = () => {
         sx={{
           mt: 2,
           backgroundColor: theme === 'light' ? '#007BFF' : '#FFD700',
+          color: theme === 'light' ? '#fff' : '#000',
           '&:hover': {
             backgroundColor: theme === 'light' ? '#0056b3' : '#FFC107',
           },

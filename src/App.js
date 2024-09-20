@@ -34,7 +34,7 @@ function App() {
     }
   }
 
-  const baseUrl = '';
+  const baseUrl = '/gb/react/';
 
   return (
     <>
