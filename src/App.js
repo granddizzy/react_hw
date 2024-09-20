@@ -7,6 +7,7 @@ import Main from "./pages/Main";
 import {useSelector} from 'react-redux';
 import {Box, GlobalStyles} from "@mui/material";
 import ThemeSwitch from "./components/ThemeSwith";
+import Products from "./pages/Products";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -33,7 +34,7 @@ function App() {
     }
   }
 
-  const baseUrl = '/gb/react/';
+  const baseUrl = '';
 
   return (
     <>
@@ -50,11 +51,15 @@ function App() {
             </NavLink> |
             <NavLink to="/TodoList" className="nav-link" style={getLinkStyle}>
               Список задач
+            </NavLink> |
+            <NavLink to="/Products" className="nav-link" style={getLinkStyle}>
+              Продукты
             </NavLink>
           </nav>
           <Routes>
             <Route path="/TemperatureConverter" element={<TemperatureConverter/>}/>
             <Route path="/TodoList" element={<TodoList tasks={tasks} setTasks={setTasks}/>}/>
+            <Route path="/Products" element={<Products tasks={tasks} setTasks={setTasks}/>}/>
             <Route path="/" element={<Main baseUrl={baseUrl}/>}/>
           </Routes>
         </BrowserRouter>
