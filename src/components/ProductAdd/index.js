@@ -26,10 +26,17 @@ const AddProduct = () => {
     }
   };
 
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+    if (value >= 0) {
+      setPrice(value);
+    }
+  };
+
   const theme = useSelector((state) => state.theme.theme);
 
   return (
-    <Box sx={{ maxWidth: 400, margin: '0 auto', mt: 4, p: 2, textAlign: 'center' }}>
+    <Box sx={{maxWidth: 400, margin: '0 auto', mt: 4, p: 2, textAlign: 'center'}}>
       <TextField
         label="Наименование"
         value={name}
@@ -95,7 +102,7 @@ const AddProduct = () => {
       <TextField
         label="Цена"
         value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        onChange={(e) => handlePriceChange(e)}
         type="number"
         fullWidth
         margin="normal"

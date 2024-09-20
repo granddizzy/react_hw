@@ -1,40 +1,18 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {removeProduct, toggleAvailability, updateProduct} from '../../redux/productSlice';
 import {
   List,
   ListItem,
-  ListItemText,
-  IconButton,
-  Checkbox,
-  FormControlLabel,
-  Button,
-  Typography,
-  Box, TextField
+  Box
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditProduct from "../ProductEdit";
 import ProductEdit from "../ProductEdit";
+import ProductListItem from "../ProductListItem";
 
 const ProductList = () => {
   const products = useSelector((state) => state.products.products);
-  const dispatch = useDispatch();
-
   const [editingProductId, setEditingProductId] = useState(null);
 
   const theme = useSelector((state) => state.theme.theme);
-
-  const handleRemoveProduct = (id) => {
-    dispatch(removeProduct(id));
-  };
-
-  const handleToggleAvailability = (id) => {
-    dispatch(toggleAvailability(id));
-  };
-
-  const handleEditProduct = (product) => {
-    setEditingProductId(product.id); // Устанавливаем редактируемый продукт чтобы открыть редактирование
-  };
 
   return (
     <Box sx={{maxWidth: 600, margin: '0 auto', mt: 4}}>
@@ -55,68 +33,9 @@ const ProductList = () => {
             }}
           >
             {editingProductId === product.id ? (
-              // Форма редактирования
               <ProductEdit product={product} setEditingProductId={setEditingProductId}/>
             ) : (
-              // Обычная карточка продукта
-              <>
-                <ListItemText
-                  primary={
-                    <Typography variant="h6" sx={{color: theme === 'light' ? '#000' : '#fff'}}>
-                      {product.name}
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography variant="body2" sx={{color: theme === 'light' ? '#666' : '#ccc'}}>
-                      {`Описание: ${product.description}, Цена: ${product.price}`}
-                    </Typography>
-                  }
-                  primaryTypographyProps={{sx: {fontWeight: 'bold'}}}
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={product.available}
-                      onChange={() => handleToggleAvailability(product.id)}
-                      sx={{
-                        color: theme === 'light' ? '#007BFF' : '#FFD700',
-                        '&.Mui-checked': {
-                          color: theme === 'light' ? '#007BFF' : '#FFD700',
-                        },
-                      }}
-                    />
-                  }
-                  label="Доступно"
-                  sx={{ml: 2}}
-                />
-                <Button
-                  variant="outlined"
-                  onClick={() => handleEditProduct(product)}
-                  sx={{
-                    marginRight: 1,
-                    borderColor: theme === 'light' ? '#007BFF' : '#FFD700',
-                    color: theme === 'light' ? '#007BFF' : '#FFD700',
-                    '&:hover': {
-                      borderColor: theme === 'light' ? '#0056b3' : '#FFC107',
-                      color: theme === 'light' ? '#0056b3' : '#FFC107',
-                    },
-                  }}
-                >
-                  Редактировать
-                </Button>
-                <IconButton
-                  edge="end"
-                  onClick={() => handleRemoveProduct(product.id)}
-                  sx={{
-                    color: theme === 'light' ? '#f44336' : '#ff5722',
-                    '&:hover': {
-                      color: theme === 'light' ? '#d32f2f' : '#ff3d00',
-                    },
-                  }}
-                >
-                  <DeleteIcon/>
-                </IconButton>
-              </>
+              <ProductListItem product={product} setEditingProductId={setEditingProductId}/>
             )}
           </ListItem>
         ))}
